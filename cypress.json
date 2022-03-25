@@ -1,5 +1,6 @@
 {
   "component": {
-    "testFiles": "**/*.test.{js,ts,jsx,tsx}"
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "components"
   }
 }

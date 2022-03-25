@@ -1,4 +1,5 @@
 import * as models from '../lib/models'
+import Tooltip from './tooltip'
 
 
 interface UserTileProps {
@@ -8,9 +9,13 @@ interface UserTileProps {
 const UserTile = (props: UserTileProps): JSX.Element => {
   const { user } = props
   return (
-    <div className="px-4 py-2">
-      <span>{user.name}</span>
-    </div>
+    <Tooltip text={`${user.username}, ${user.email}`}>
+      <div
+        className="relative px-4 py-2"
+      >
+        <span>{user.name}</span>
+      </div>
+    </Tooltip>
   )
 }
 

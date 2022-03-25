@@ -42,7 +42,7 @@ describe('Album Item component test', () => {
         <AlbumItem album={album} />
       </AlbumContext.Provider>
     )
-    cy.get('button').contains(album.title).click('exist')
+    cy.get('button').contains(album.title).click()
     cy.get(`[alt="${album.title}"]`).should('be.visible')
   })
 })

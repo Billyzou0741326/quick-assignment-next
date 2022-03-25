@@ -15,6 +15,5 @@ describe('UserTile', () => {
     }
     mount(<UserTile user={user} />)
     cy.contains(user.name).should('exist')
-    cy.get('a').should('have.attr', 'href')
   })
 })

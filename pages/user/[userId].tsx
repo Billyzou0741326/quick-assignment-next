@@ -38,7 +38,7 @@ const UserDetail: NextPage<UserDetailProps, {}> = (props) => {
   }
 
   return (
-    <div className="w-screen min-h-screen flex flex-col gap-8 md:flex-row p-8 bg-gray-200/50">
+    <div className="flex flex-col gap-8 md:flex-row p-8 bg-gray-200/50">
       <Head>
         <title>{user.username} | Full Stack Assignment</title>
       </Head>

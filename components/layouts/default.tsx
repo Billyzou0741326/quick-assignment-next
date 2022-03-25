@@ -10,7 +10,7 @@ const Layout = (props: LayoutProps): JSX.Element => {
   const { children = <></> } = props
 
   return (
-    <div className="min-h-screen max-w-screen">
+    <div className="min-h-screen max-w-screen bg-gray-200">
       <div className="px-8 py-4 flex flex-row w-full bg-slate-800 text-white">
         <div>
           <Link href="/" passHref>

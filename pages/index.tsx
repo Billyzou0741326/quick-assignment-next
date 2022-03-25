@@ -15,7 +15,7 @@ const Home: NextPage<HomeProps, {}> = (props) => {
   const { users = [] } = props
 
   return (
-    <div className="min-h-screen max-w-screen bg-gray-200 py-8">
+    <div className="bg-gray-200 py-8">
       <Head>
         <title>Home | Full Stack Assignment</title>
       </Head>

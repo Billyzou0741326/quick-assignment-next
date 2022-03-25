@@ -37,4 +37,14 @@ describe('Post Item component test', () => {
     )
     cy.contains(post.title).should('exist').and('be.visible')
   })
+  it('expands section on click', () => {
+    mount(
+      <PostContext.Provider value={{ getCommentsByPostId: getCommentsByPostId }}>
+        <PostItem post={post} />
+      </PostContext.Provider>
+    )
+    cy.get('button').contains('Load comments').click({ force: true }).then(() => {
+      cy.get('span').contains(comments[0].name).should('be.visible')
+    })
+  })
 })

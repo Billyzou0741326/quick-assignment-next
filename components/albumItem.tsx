@@ -1,9 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 
-import * as api from '../lib/api'
 import * as models from '../lib/models'
-import ArrowsExpand from './icons/arrows-expand'
+import AlbumContext from '../lib/context/album'
 import ChevronRight from './icons/chevron-right'
 
 
@@ -17,11 +16,12 @@ const AlbumItem = (props: AlbumItemProps): JSX.Element => {
   const [ expanded, setExpanded ] = React.useState(false)
   const [ loading, setLoading ] = React.useState(false)
   const [ photos, setPhotos ] = React.useState<models.Photo[]>([])
+  const { getPhotosByAlbumId } = React.useContext(AlbumContext)
 
   const lazyFetchPhotos = async () => {
     if (album !== null && (!photos || photos.length === 0)) {
       setLoading(true)
-      const photos = await api.getPhotosByAlbumId(album.id)
+      const photos = await getPhotosByAlbumId(album.id)
       setLoading(false)
       setPhotos(photos)
     }

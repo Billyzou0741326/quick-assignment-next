@@ -1,7 +1,7 @@
 import React from 'react'
 
-import * as api from '../lib/api'
 import * as models from '../lib/models'
+import PostContext from '../lib/context/post'
 import PencilAlt from './icons/pencil-alt'
 import Trash from './icons/trash'
 import ChevronRight from './icons/chevron-right'
@@ -25,6 +25,7 @@ const PostItem = (props: PostItemProps): JSX.Element => {
   const [ editedTitle, setEditedTitle ] = React.useState(post ? post.title : '')
   const [ editedBody, setEditedBody ] = React.useState(post ? post.body : '')
   const [ comments, setComments ] = React.useState<models.Comment[]>([])
+  const { getCommentsByPostId } = React.useContext(PostContext)
 
   const updatePost = async (newTitle: string, newBody: string, post: models.Post) => {
     const updatedPost = Object.assign({}, post, {
@@ -38,7 +39,7 @@ const PostItem = (props: PostItemProps): JSX.Element => {
   const lazyLoadComments = async () => {
     if (post !== null && (!comments || comments.length === 0)) {
       setLoading(true)
-      const comments = await api.getCommentsByPostId(post.id)
+      const comments = await getCommentsByPostId(post.id)
       setLoading(false)
       setComments(comments)
     }

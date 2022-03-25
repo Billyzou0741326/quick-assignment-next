@@ -1,8 +1,10 @@
 import { Disclosure } from "@headlessui/react"
 
+import * as models from '../lib/models'
+import * as api from '../lib/api'
 import ChevronRight from "./icons/chevron-right"
 import AlbumItem from './albumItem'
-import * as models from '../lib/models'
+import AlbumContext from '../lib/context/album'
 
 
 interface AlbumProps {
@@ -27,14 +29,16 @@ const AlbumSection = (props: AlbumProps): JSX.Element => {
             </div>
           </Disclosure.Button>
           <Disclosure.Panel className="p-4">
-            <div className="flex flex-col divide-y rounded-lg bg-white">
-              {albums.map((album) => (
-                <AlbumItem
-                  key={`${album.id}`}
-                  album={album}
-                />
-              ))}
-            </div>
+            <AlbumContext.Provider value={{ getPhotosByAlbumId: api.getPhotosByAlbumId }}>
+              <div className="flex flex-col divide-y rounded-lg bg-white">
+                {albums.map((album) => (
+                  <AlbumItem
+                    key={`${album.id}`}
+                    album={album}
+                  />
+                ))}
+              </div>
+            </AlbumContext.Provider>
           </Disclosure.Panel>
         </>
       )}

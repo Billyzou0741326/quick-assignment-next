@@ -28,9 +28,9 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       onMouseLeave={onMouseLeave}
     >
       <div
-        className={`absolute whitespace-nowrap ml-4 left-full px-4 py-2
+        className={`absolute whitespace-nowrap mr-2 right-full px-4 py-2
           bg-gradient-to-r from-black to-gray-700 text-white rounded flex items-center
-          transition-all duration-150
+          transition-all duration-150 z-10
           ${show ? '' : 'hidden'}`}
         ref={tipRef}
       >

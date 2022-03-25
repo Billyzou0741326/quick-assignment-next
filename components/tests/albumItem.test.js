@@ -42,7 +42,7 @@ describe('Album Item component test', () => {
         <AlbumItem album={album} />
       </AlbumContext.Provider>
     )
-    cy.get('button').contains('Albums').click()
-    cy.get('span').contains(album.title).should('be.visible')
+    cy.get('button').contains(album.title).click()
+    cy.get(':nth-child(1) > span').find('img').should('have.attr', 'alt').should('include', photos[0].title)
   })
 })

@@ -24,7 +24,8 @@ const PostSection = (props: PostProps): JSX.Element => {
       {({ open }) => (
         <>
           <Disclosure.Button className="w-full">
-            <div className="px-6 py-2 flex flex-row items-center w-full border-l-4 border-green-500 rounded-r-full bg-white">
+            <div className={`px-6 py-2 flex flex-row items-center w-full border-l-4 border-blue-500 rounded-r-full
+              shadow-md bg-white`}>
               <span className="text-2xl">Posts</span>
               <div className="flex-1"></div>
               {/*

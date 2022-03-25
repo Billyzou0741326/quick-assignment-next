@@ -36,6 +36,5 @@ describe('Post Item component test', () => {
       </PostContext.Provider>
     )
     cy.contains(post.title).should('exist').and('be.visible')
-    cy.contains(post.body).should('exist').and('be.visible')
   })
 })

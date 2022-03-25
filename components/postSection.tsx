@@ -1,6 +1,7 @@
 import { Disclosure } from "@headlessui/react"
 
 import ChevronRight from "./icons/chevron-right"
+import Search from './icons/search'
 import PostItem from './postItem'
 import * as models from '../lib/models'
 
@@ -33,6 +34,18 @@ const PostSection = (props: PostProps): JSX.Element => {
             </div>
           </Disclosure.Button>
           <Disclosure.Panel className="p-4">
+            {/* Search bar */}
+            <div className="w-full mb-4 flex flex-row gap-2 items-center">
+              <input
+                className={`w-full text-sm px-2 py-1 font-normal bg-clip=padding border border-solid border-gray-300 rounded
+                  transition ease-in-out focus:border-blue-600 focus:outline-none`}
+                placeholder="Search"
+              />
+              <button className="p-2 rounded-md bg-green-400 hover:bg-green-600 text-white ease-in-out duration-300">
+                <Search />
+              </button>
+            </div>
+            {/* Posts */}
             <div className="flex flex-col gap-4">
               {posts.map((post) => (
                 <PostItem

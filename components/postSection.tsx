@@ -2,8 +2,6 @@ import { Disclosure } from "@headlessui/react"
 
 import ChevronRight from "./icons/chevron-right"
 import PostItem from './postItem'
-import PostContext from '../lib/context/post'
-import * as api from '../lib/api'
 import * as models from '../lib/models'
 
 
@@ -35,18 +33,16 @@ const PostSection = (props: PostProps): JSX.Element => {
             </div>
           </Disclosure.Button>
           <Disclosure.Panel className="p-4">
-            <PostContext.Provider value={{ getCommentsByPostId: api.getCommentsByPostId }}>
-              <div className="flex flex-col gap-4">
-                {posts.map((post) => (
-                  <PostItem
-                    key={`${post.id}`}
-                    post={post}
-                    onChange={onChangePost}
-                    onDelete={onDeletePost}
-                  />
-                ))}
-              </div>
-            </PostContext.Provider>
+            <div className="flex flex-col gap-4">
+              {posts.map((post) => (
+                <PostItem
+                  key={`${post.id}`}
+                  post={post}
+                  onChange={onChangePost}
+                  onDelete={onDeletePost}
+                />
+              ))}
+            </div>
           </Disclosure.Panel>
         </>
       )}

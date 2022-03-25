@@ -1,6 +1,5 @@
-import type { GetServerSideProps, NextPage } from "next"
-import Head from 'next/head'
 import React from 'react'
+import type { GetServerSideProps, NextPage } from "next"
 
 import * as models from '../../lib/models'
 import * as api from '../../lib/api'
@@ -39,10 +38,6 @@ const UserDetail: NextPage<UserDetailProps, {}> = (props) => {
 
   return (
     <div className="w-screen min-h-screen flex flex-col gap-8 md:flex-row p-8 bg-gray-200/50">
-      <Head>
-        <title>{user.username} | Full Stack Assignment</title>
-      </Head>
-
       {/* User profile */}
       <div className="justify-center p-4">
         <UserCard user={user} />
@@ -68,11 +63,7 @@ const UserDetail: NextPage<UserDetailProps, {}> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let { userId } = context.query
-  if (!userId || Array.isArray(userId)) {
-    userId = ''
-  }
-  const uid = Number.parseInt(userId) || 0
+  const uid = 1
   const [ user, posts, albums ] = await Promise.all([
     api.getUserById(uid),
     api.getPostsByUserId(uid),

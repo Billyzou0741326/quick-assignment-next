@@ -1,7 +1,7 @@
 import { mount } from '@cypress/react'
-import UserTile from '../userTile'
+import UserCard from '../userCard'
 
-describe('UserTile', () => {
+describe('UserCard', () => {
   it('renders the user info', () => {
     const user = {
       id: 1,
@@ -13,8 +13,10 @@ describe('UserTile', () => {
       website: 'https://john-doe.example.com',
       company: null,
     }
-    mount(<UserTile user={user} />)
+    mount(<UserCard user={user} />)
     cy.contains(user.name).should('exist')
+    cy.contains(user.username).should('exist')
+    cy.contains(user.email).should('exist')
     cy.get('a').should('have.attr', 'href')
   })
 })

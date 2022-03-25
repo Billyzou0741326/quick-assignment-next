@@ -46,7 +46,7 @@ const AlbumItem = (props: AlbumItemProps): JSX.Element => {
             <ChevronRight className={`${expanded ? 'transform rotate-90' : ''}`} />
           </button>
           {expanded && (
-            <div className="flex flex-row flex-wrap gap-2">
+            <div className="flex flex-row flex-wrap gap-2 mt-4">
               {photos.map((photo) => (
                 <div key={`${photo.id}`} className="relative w-28 h-28">
                   <Image

@@ -29,16 +29,14 @@ const AlbumSection = (props: AlbumProps): JSX.Element => {
             </div>
           </Disclosure.Button>
           <Disclosure.Panel className="p-4">
-            <AlbumContext.Provider value={{ getPhotosByAlbumId: api.getPhotosByAlbumId }}>
-              <div className="flex flex-col divide-y rounded-lg bg-white">
-                {albums.map((album) => (
-                  <AlbumItem
-                    key={`${album.id}`}
-                    album={album}
-                  />
-                ))}
-              </div>
-            </AlbumContext.Provider>
+            <div className="flex flex-col divide-y rounded-lg bg-white">
+              {albums.map((album) => (
+                <AlbumItem
+                  key={`${album.id}`}
+                  album={album}
+                />
+              ))}
+            </div>
           </Disclosure.Panel>
         </>
       )}

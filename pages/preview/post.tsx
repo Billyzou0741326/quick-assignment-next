@@ -1,9 +1,11 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import React from 'react'
 
-import PostSection from '../../components/postSection'
 import * as models from '../../lib/models'
 import * as api from '../../lib/api'
+import PostSection from '../../components/postSection'
+import PostContext from '../../lib/context/post'
+
 
 interface PostProps {
   posts?: models.Post[]
@@ -27,11 +29,13 @@ const Post: NextPage<PostProps, {}> = (props) => {
 
   return (
     <div className="min-h-screen max-w-screen bg-gray-200">
-      <PostSection
-        posts={postsState}
-        onDeletePost={(postId) => onDeletePost(postId)}
-        onChangePost={(post) => onChangePost(post)}
-      />
+      <PostContext.Provider value={{ getCommentsByPostId: api.getCommentsByPostId }}>
+        <PostSection
+          posts={postsState}
+          onDeletePost={(postId) => onDeletePost(postId)}
+          onChangePost={(post) => onChangePost(post)}
+        />
+      </PostContext.Provider>
     </div>
   )
 }

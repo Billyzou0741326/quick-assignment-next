@@ -1,9 +1,10 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import React from 'react'
 
-import AlbumSection from '../../components/albumSection'
 import * as models from '../../lib/models'
 import * as api from '../../lib/api'
+import AlbumSection from '../../components/albumSection'
+import AlbumContext from '../../lib/context/album'
 
 interface AlbumProps {
   albums?: models.Album[]
@@ -14,9 +15,11 @@ const Album: NextPage<AlbumProps, {}> = (props) => {
 
   return (
     <div className="min-h-screen max-w-screen bg-gray-200">
-      <AlbumSection
-        albums={albums}
-      />
+      <AlbumContext.Provider value={{ getPhotosByAlbumId: api.getPhotosByAlbumId }}>
+        <AlbumSection
+          albums={albums}
+        />
+      </AlbumContext.Provider>
     </div>
   )
 }

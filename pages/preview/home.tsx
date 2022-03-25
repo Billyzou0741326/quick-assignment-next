@@ -1,11 +1,10 @@
-import type { GetServerSideProps, NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage, GetServerSideProps } from 'next'
 import Link from 'next/link'
+import React from 'react'
 
-import * as models from '../lib/models'
-import * as api from '../lib/api'
-import UserTile from '../components/userTile'
+import * as models from '../../lib/models'
+import * as api from '../../lib/api'
+import UserTile from '../../components/userTile'
 
 interface HomeProps {
   users?: models.User[]
@@ -16,10 +15,6 @@ const Home: NextPage<HomeProps, {}> = (props) => {
 
   return (
     <div className="min-h-screen max-w-screen bg-gray-200 py-8">
-      <Head>
-        <title>Home | Full Stack Assignment</title>
-      </Head>
-
       {/* User list */}
       <div className="container mx-auto max-w-md flex flex-col bg-white rounded-lg divide-y">
         {users.map((user) => (
